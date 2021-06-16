@@ -1,7 +1,63 @@
 ﻿@page "/"
+@using BlazorWasmTest.Client.Helpers;
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<p>Hola, @UtilidadesString.Enmayuscular(nombre)</p>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div>
+    <h3>Pelicula</h3>
+    <p>Titulo: <b>@spiderMan.Name</b></p>
+    <p>Lanzamiento: <b>@spiderMan.ReleaseDate.ToString("dd MMM yyyy")</b></p>
+</div>
+
+<div>
+    <h3>Peliculas</h3>
+    
+        @foreach (var movie in ObtenerPeliculas())
+        {
+            <div>
+                <p>Titulo: <b>@movie.Name</b></p>
+                <p>Lanzamiento: <b>@movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>
+            </div>
+        }
+
+</div>
+
+<div>
+    <h3>Peliculas</h3>
+
+    @for (var i = 0; i < Movies.Count; i++)
+    {
+        <div>
+            <p>@(i+1)) Titulo: <b>@Movies[i].Name</b></p>
+            <p>Lanzamiento: <b>@Movies[i].ReleaseDate.ToString("dd MMM yyyy")</b></p>
+        </div>
+    }
+
+</div>
+
+
+@code { 
+
+    string nombre = "Livingstone";
+
+    public Movie spiderMan { get { return ObtenerPelicula(); } }
+
+    public List<Movie> Movies { get { return ObtenerPeliculas(); } }
+
+    private List<Movie>  ObtenerPeliculas()
+    {
+        return new List<Movie>()
+        {
+            new Movie() {Name = "Spider Man", ReleaseDate = new DateTime(2019, 07, 014)},
+            new Movie() {Name = "SuperMan", ReleaseDate = new DateTime(2015, 09, 01)},
+            new Movie() {Name = "XMen", ReleaseDate = new DateTime(2020, 03, 08)},
+            new Movie() {Name = "Batman", ReleaseDate = new DateTime(1989, 10, 05)}
+        };
+    }
+
+    private Movie ObtenerPelicula()
+    {
+        return new Movie() { Name = "Spider Man", ReleaseDate = new DateTime(2019,07, 01) };
+    }
+}

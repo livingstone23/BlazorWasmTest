@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorWasmTest.Shared.Dependencies
+namespace BlazorWasmTest.Shared.entities
 {
-    public class Movies
+    public class Movie
     {
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
