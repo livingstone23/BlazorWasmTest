@@ -10,34 +10,51 @@
     <p>Lanzamiento: <b>@spiderMan.ReleaseDate.ToString("dd MMM yyyy")</b></p>
 </div>
 
-<div>
-    <h3>Peliculas</h3>
-    
-        @foreach (var movie in ObtenerPeliculas())
+@*
+    <div>
+        <h3>Peliculas</h3>
+
+            @foreach (var movie in ObtenerPeliculas())
+            {
+                <div>
+                    <p>Titulo: <b>@movie.Name</b></p>
+                    <p>Lanzamiento: <b>@movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>
+                </div>
+            }
+
+    </div>
+*@
+
+@if (Movies == null)
+{
+    <text>Cargando...</text>
+}
+else if (Movies.Count() == 0)
+{
+    <text>No hay registros para mostrar...</text>
+}
+else
+{
+    <div>
+        <h3>Peliculas</h3>
+
+        @for (var i = 0; i < Movies.Count; i++)
         {
             <div>
-                <p>Titulo: <b>@movie.Name</b></p>
-                <p>Lanzamiento: <b>@movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>
+                <p>@(i+1)) Titulo: <b>@Movies[i].Name</b></p>
+                <p>Lanzamiento: <b>@Movies[i].ReleaseDate.ToString("dd MMM yyyy")</b></p>
             </div>
         }
 
-</div>
-
-<div>
-    <h3>Peliculas</h3>
-
-    @for (var i = 0; i < Movies.Count; i++)
-    {
-        <div>
-            <p>@(i+1)) Titulo: <b>@Movies[i].Name</b></p>
-            <p>Lanzamiento: <b>@Movies[i].ReleaseDate.ToString("dd MMM yyyy")</b></p>
-        </div>
-    }
-
-</div>
+    </div>
 
 
-@code { 
+}
+
+
+
+
+@code {
 
     string nombre = "Livingstone";
 
@@ -45,10 +62,10 @@
 
     public List<Movie> Movies { get { return ObtenerPeliculas(); } }
 
-    private List<Movie>  ObtenerPeliculas()
+    private List<Movie> ObtenerPeliculas()
     {
         return new List<Movie>()
-        {
+{
             new Movie() {Name = "Spider Man", ReleaseDate = new DateTime(2019, 07, 014)},
             new Movie() {Name = "SuperMan", ReleaseDate = new DateTime(2015, 09, 01)},
             new Movie() {Name = "XMen", ReleaseDate = new DateTime(2020, 03, 08)},
@@ -58,6 +75,6 @@
 
     private Movie ObtenerPelicula()
     {
-        return new Movie() { Name = "Spider Man", ReleaseDate = new DateTime(2019,07, 01) };
+        return new Movie() { Name = "Spider Man", ReleaseDate = new DateTime(2019, 07, 01) };
     }
 }
