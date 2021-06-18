@@ -3,11 +3,11 @@
     <p>Titulo: <b>@Movie.Name</b></p>
     <p>Lanzamiento: <b>@Movie.ReleaseDate.ToString("dd MMM yyyy")</b></p>
 
-    @if (MostrarBotones) 
+    @if (MostrarBotones)
     {
         <div>
 
-                <button @onclick="(() => EliminarPelicula.InvokeAsync(Movie))">Borrar </button>
+            <button @onclick="(() => EliminarPelicula.InvokeAsync(Movie))">Borrar </button>
         </div>
     }
 
