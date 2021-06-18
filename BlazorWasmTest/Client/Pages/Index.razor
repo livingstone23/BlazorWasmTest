@@ -5,31 +5,11 @@
 
 <div>
 
-    <h3>Cargando</h3>
-    <ListadoPeliculas>
-        @*<span style="color:red">
-                No hay peliculas!
-            </span>*@
-        <Cargando>
-            <text>Mensaje personalizado: cargando</text>
-        </Cargando>
-        <NoHayRegistros>
-            <text>Mensaje personalizado: no hay registros</text>
-        </NoHayRegistros>
-    </ListadoPeliculas>
+    <h3>Peliculas</h3>
 
-    <h3>No hay peliculas</h3>
-    <ListadoPeliculas Movies="ObtenerPeliculas()">
-        @*<span style="color:red">
-                No hay peliculas!
-            </span>*@
-        <Cargando>
-            <text>Mensaje personalizado: cargando</text>
-        </Cargando>
-        <NoHayRegistros>
-            <text>Mensaje personalizado: no hay registros</text>
-        </NoHayRegistros>
-    </ListadoPeliculas>
+    <ListadoPeliculas Movies="ObtenerPeliculas()"/>
+
+
 
 </div>
 
@@ -40,16 +20,16 @@
 
     private List<Movie> ObtenerPeliculas()
     {
-        return new List<Movie>();
-        //return null;
-        //return new List<Movie>()
-        //{
-        //    new Movie() {Name = "Spider Man", ReleaseDate = new DateTime(2019, 07, 014)},
-        //    new Movie() {Name = "SuperMan", ReleaseDate = new DateTime(2015, 09, 01)},
-        //    new Movie() {Name = "XMen", ReleaseDate = new DateTime(2020, 03, 08)},
-        //    new Movie() {Name = "Batman", ReleaseDate = new DateTime(1989, 10, 05)}
-        //};
-        }
+
+
+        return new List<Movie>()
+        {
+            new Movie() {Name = "Spider Man", ReleaseDate = new DateTime(2019, 07, 014)},
+            new Movie() {Name = "SuperMan", ReleaseDate = new DateTime(2015, 09, 01)},
+            new Movie() {Name = "XMen", ReleaseDate = new DateTime(2020, 03, 08)},
+            new Movie() {Name = "Batman", ReleaseDate = new DateTime(1989, 10, 05)}
+        };
+    }
 
 
 }

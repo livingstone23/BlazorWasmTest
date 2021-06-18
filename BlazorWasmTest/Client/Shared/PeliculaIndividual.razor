@@ -6,7 +6,7 @@
     @if (MostrarBotones) 
     {
 <div>
-    @*<button @onclick="Eliminar">Borrar </button>*@
+
         <button @onclick="(() => EliminarPelicula.InvokeAsync(Movie))">Borrar </button>
 </div>
     }
