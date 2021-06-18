@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using BlazorWasmTest.Client.Helpers;
+@inject IRepositorio Repositorio
 
 
 
@@ -18,17 +19,22 @@
 
     string nombre = "Livingstone";
 
+    private List<Movie> Movies;
+
     private List<Movie> ObtenerPeliculas()
     {
+        Movies = Repositorio.ObtenerPeliculas();
 
+        //Movies = new List<Movie>()
+        //{
+        //        new Movie() {Name = "Spider Man", ReleaseDate = new DateTime(2019, 07, 014)},
+        //        new Movie() {Name = "SuperMan", ReleaseDate = new DateTime(2015, 09, 01)},
+        //        new Movie() {Name = "XMen", ReleaseDate = new DateTime(2020, 03, 08)},
+        //        new Movie() {Name = "Batman", ReleaseDate = new DateTime(1989, 10, 05)}
+        //};
 
-        return new List<Movie>()
-        {
-            new Movie() {Name = "Spider Man", ReleaseDate = new DateTime(2019, 07, 014)},
-            new Movie() {Name = "SuperMan", ReleaseDate = new DateTime(2015, 09, 01)},
-            new Movie() {Name = "XMen", ReleaseDate = new DateTime(2020, 03, 08)},
-            new Movie() {Name = "Batman", ReleaseDate = new DateTime(1989, 10, 05)}
-        };
+        return Movies;
+
     }
 
 
