@@ -1,18 +1,26 @@
 ﻿@page "/counter"
+@inject ServicioSingleton singleton
+@inject ServicioTransient transient
 
 <h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
+<p>Current count:   @currentCount</p>
+<p>Singleton count: @singleton.Valor</p>
+<p>Transient count: @transient.Valor</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 <ListadoPeliculas />
 
 @code {
+
     private int currentCount = 0;
 
     private void IncrementCount()
     {
         currentCount++;
+        singleton.Valor = currentCount; 
+        transient.Valor = currentCount;
     }
+
 }
