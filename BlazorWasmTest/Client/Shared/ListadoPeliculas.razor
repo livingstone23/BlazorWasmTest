@@ -2,11 +2,28 @@
 
 @if (Movies == null)
 {
-    <text>Cargando...</text>
+    @*<text>Cargando...</text>*@
+    @*@ChildContent*@
+    @if (Cargando == null)
+    {
+        <text>Cargando...</text>
+    }
+    else
+    {
+        @Cargando
+    }
 }
 else if (Movies.Count() == 0)
 {
-    <text>No hay registros para mostrar...</text>
+    @*<text>No hay registros para mostrar...</text>*@
+    @if (NoHayRegistros == null)
+    {
+        <text>No hay registros para mostrar...</text>
+    }
+    else
+    {
+        @NoHayRegistros 
+    }
 }
 else
 {
@@ -16,10 +33,9 @@ else
 
     @foreach (var movie in Movies)
     {
-        <PeliculaIndividual Movie="movie" 
-                            MostrarBotones="MostrarBotones" 
-                            EliminarPelicula="EliminarPelicula2"
-                            />
+        <PeliculaIndividual Movie="movie"
+                            MostrarBotones="MostrarBotones"
+                            EliminarPelicula="EliminarPelicula2" />
     }
 
 }
@@ -27,6 +43,9 @@ else
 @code {
 
     [Parameter] public List<Movie> Movies { get; set; }
+    [Parameter] public RenderFragment Cargando { get; set; }
+    [Parameter] public RenderFragment NoHayRegistros { get; set; }
+
     bool MostrarBotones = false;
 
     void EliminarPelicula2(Movie movie)
